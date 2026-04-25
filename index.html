@@ -1,38 +1,375 @@
-Aqui está o prompt atualizado com as informações do perfil da Leticia Grigoletto. Mantive a mesma estrutura visual e o design elegante da página anterior, mas adaptei os textos, o estilo de portfólio (focado em casais/ensaios urbanos como mostra o feed) e os dados de contato.
-**Copie o texto abaixo:**
-> Aja como um desenvolvedor Front-end sênior e web designer. Por favor, crie o código HTML e CSS (pode usar Tailwind CSS se preferir) para uma landing page de portfólio de fotografia moderna, minimalista e elegante.
-> **Estilo Visual e Tema:**
->  * **Cores:** Tons terrosos, urbanos e quentes, refletindo uma paleta romântica (bege, terracota, marrom escuro, off-white). Fundo predominantemente claro/off-white.
->  * **Tipografia:** Fontes elegantes (mistura de Sans-serif limpa para textos e uma fonte fina/geométrica para os títulos grandes).
->  * **Design:** Layout espaçoso (clean), uso de imagens sobrepostas (overlapping) e cantos levemente arredondados ou retos.
-> **Estrutura das Seções (Single Page):**
-> **1. Header (Cabeçalho):**
->  * Logo centralizado (Texto "Leticia Grigoletto Photography" ou iniciais "LG").
->  * Menu de navegação à esquerda (About Me, Portfolio) e à direita (Prices, Contacts).
->  * Ícone do Instagram no canto superior direito apontando para @grigoletto.photo.
-> **2. Hero Section (Início):**
->  * Lado esquerdo: Título grande com o nome "LETICIA GRIGOLETTO", subtítulo "Capturing moments in London" (ou "Usando a fotografia para contar a sua história") e um botão "Book your session" com borda fina.
->  * Lado direito/Centro: Uma imagem de destaque grande de uma fotógrafa (estilo urbano/Londres).
->  * Rodapé do Hero: Uma barra horizontal translúcida ou com fundo integrado contendo estatísticas fictícias para preencher o design (ex: "BASED IN LONDON", "COUPLES & PORTRAITS", "STORYTELLER").
-> **3. Seção "About Me" (Sobre mim):**
->  * Lado esquerdo: Composição estilizada de duas imagens sobrepostas (sugestão: fotos em cenários urbanos de Londres).
->  * Lado direito: Título "About Me" e 2 a 3 parágrafos curtos explicando que ela é uma fotógrafa brasileira baseada em Londres, apaixonada por capturar momentos genuínos e usar a fotografia para contar a história de cada pessoa/casal.
-> **4. Seção "Portfolio":**
->  * Título "Portfolio" alinhado à esquerda com uma linha horizontal decorativa ao lado.
->  * Grid de 4 colunas com imagens verticais (cards de fotos, focando em casais e retratos urbanos).
->  * Cada imagem deve ter uma sobreposição escura translúcida no centro contendo o nome da categoria (ex: COUPLES, LOVE STORY, URBAN PORTRAITS, ENGAGEMENT).
-> **5. Seção "Prices" (Preços):**
->  * Título "Packages" com uma linha horizontal decorativa.
->  * 3 Cards de planos (ex: "Mini Session", "Standard Story", "Premium Experience").
->  * Cada card deve ter: Uma imagem de fundo no topo com o nome do pacote e o preço sobrepostos, seguido por uma tabela limpa com detalhes (Duration, Number of photos, Location guide), e um botão "BOOK" na base. O card do meio deve ter um leve destaque.
-> **6. Seção de Depoimentos (Testimonials):**
->  * Um container em formato de caixa com borda fina.
->  * Foto de perfil circular pequena no topo central (quebrando a borda superior).
->  * Nome do cliente e o texto de um depoimento elogiando os ensaios de casal.
->  * Indicadores de carrossel (pontinhos/linhas) abaixo da caixa.
-> **7. Footer (Rodapé):**
->  * Lado esquerdo: Logo e informações de contato (Email: grigoletto.photo@gmail.com, Location: London).
->  * Centro: Links de navegação e ícone do Instagram e Linktree (linktr.ee/grigoletto.photo).
->  * Lado direito: Formulário de inscrição ("Stay in touch" com botão "Subscribe").
-> Por favor, forneça o código completo, responsivo (adaptável para mobile) e inclua placeholders (como o Unsplash focando em couple, london ou placehold.co) para as imagens.
-> 
+```html
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leticia Grigoletto Photography | London Storyteller</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500&family=Reenie+Beanie&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #FDFCFB;
+            --color-terracota: #8E5B3F;
+            --color-brown: #3E2F28;
+            --color-nude: #EADED5;
+        }
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-brown);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4, .font-elegant {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- Ecrã de Splash --- */
+        #splash-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background-color: var(--color-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.4s ease-in-out;
+        }
+        .flash {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0; height: 0;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            z-index: 10001;
+            pointer-events: none;
+        }
+        .camera-icon { font-size: 4rem; z-index: 10000; }
+        .polaroid-frame {
+            background: white;
+            padding: 10px 10px 35px 10px;
+            box-shadow: 0 20px 40px rgba(62, 47, 40, 0.15);
+            width: 280px;
+            transform: scale(0.6) rotate(10deg);
+            opacity: 0;
+            position: absolute;
+            z-index: 10002;
+            text-align: center;
+        }
+        .polaroid-msg { font-family: 'Reenie Beanie', cursive; font-size: 1.8rem; margin-top: 15px; color: #333; }
+
+        @keyframes camera-quick-pulse { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
+        @keyframes flash-hit { 0% { width: 0; height: 0; opacity: 1; } 40% { width: 250vw; height: 250vw; opacity: 1; } 100% { width: 250vw; height: 250vw; opacity: 0; } }
+        @keyframes polaroid-pop { 0% { transform: scale(0.7) rotate(10deg) translateY(30px); opacity: 0; } 100% { transform: scale(1) rotate(-2deg) translateY(0); opacity: 1; } }
+
+        /* --- Classes de Utilidade --- */
+        .section-line { height: 1px; background: var(--color-terracota); flex-grow: 1; margin-left: 1.5rem; opacity: 0.4; }
+        .london-gradient { background: linear-gradient(to bottom, transparent, rgba(62, 47, 40, 0.03)); }
+        .card-hover:hover .overlay { opacity: 1; }
+        .overlay { background: rgba(62, 47, 40, 0.6); opacity: 0; transition: opacity 0.4s ease; }
+    </style>
+</head>
+<body class="overflow-hidden">
+
+    <!-- Ecrã de Splash -->
+    <div id="splash-screen">
+        <div class="flash" id="flash-effect"></div>
+        <div class="camera-icon" id="camera-unit" style="animation: camera-quick-pulse 0.4s ease-out forwards;">📸</div>
+        <div class="polaroid-frame" id="polaroid-unit">
+            <div class="aspect-square overflow-hidden bg-gray-100">
+                <!-- Imagem da Letícia na Polaroid de entrada -->
+                <img src="input_file_0.png" alt="Leticia Grigoletto Polaroid" class="w-full h-full object-cover">
+            </div>
+            <p class="polaroid-msg">Hello, I'm Letícia! ❤️</p>
+        </div>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <main id="main-content" class="opacity-0 transition-opacity duration-1000">
+        
+        <!-- 1. Cabeçalho -->
+        <header class="fixed w-full z-50 bg-[#FDFCFB]/90 backdrop-blur-sm px-6 md:px-12 py-5 flex items-center justify-between border-b border-brown/5">
+            <nav class="hidden md:flex space-x-8 text-[10px] uppercase tracking-[0.2em] font-medium w-1/3">
+                <a href="#about" class="hover:text-terracota transition">About Me</a>
+                <a href="#portfolio" class="hover:text-terracota transition">Portfolio</a>
+            </nav>
+            <div class="text-xl md:text-2xl font-elegant tracking-widest w-1/3 text-center text-brown uppercase">
+                LG <span class="hidden md:inline font-light text-sm italic ml-1 lowercase">photography</span>
+            </div>
+            <div class="flex items-center justify-end space-x-8 w-1/3">
+                <nav class="hidden md:flex space-x-8 text-[10px] uppercase tracking-[0.2em] font-medium">
+                    <a href="#prices" class="hover:text-terracota transition">Packages</a>
+                    <a href="#contact" class="hover:text-terracota transition">Contacts</a>
+                </nav>
+                <a href="https://instagram.com/grigoletto.photo" target="_blank" class="hover:text-terracota transition">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+            </div>
+        </header>
+
+        <!-- 2. Hero Section -->
+        <section class="min-h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20 pt-20 london-gradient">
+            <div class="w-full md:w-1/2 z-10 flex flex-col items-start space-y-6">
+                <span class="text-xs tracking-[0.4em] text-terracota font-medium uppercase">Capturing moments in London</span>
+                <h1 class="text-5xl md:text-8xl font-elegant leading-none text-brown">LETICIA<br>GRIGOLETTO</h1>
+                <p class="max-w-md text-sm font-light leading-relaxed opacity-80">
+                    Utilizando a fotografia para contar a sua história única entre os cenários intemporais de Londres.
+                </p>
+                <a href="#contact" class="mt-4 px-10 py-3 border border-brown text-brown text-[10px] tracking-[0.3em] hover:bg-brown hover:text-white transition-all duration-500 uppercase font-medium">Book your session</a>
+            </div>
+            
+            <div class="w-full md:w-1/2 mt-12 md:mt-0 relative flex justify-center md:justify-end">
+                <div class="w-72 h-96 md:w-[32rem] md:h-[42rem] bg-nude rounded-sm overflow-hidden shadow-2xl relative">
+                    <!-- Foto Principal da Letícia -->
+                    <img src="input_file_0.png" alt="Leticia Grigoletto - London Photographer" class="w-full h-full object-cover">
+                </div>
+                <!-- Barra de Estatísticas -->
+                <div class="absolute bottom-6 md:bottom-12 left-0 md:-left-12 w-full md:w-[110%] bg-white/70 backdrop-blur-md border-y border-brown/10 py-8 flex justify-around items-center z-20">
+                    <div class="text-center px-4">
+                        <h4 class="text-sm md:text-lg font-elegant uppercase tracking-widest">Based in London</h4>
+                        <p class="text-[7px] md:text-[9px] tracking-[0.2em] uppercase opacity-60">Location</p>
+                    </div>
+                    <div class="text-center px-4 border-x border-brown/10">
+                        <h4 class="text-sm md:text-lg font-elegant uppercase tracking-widest">Couples & Portraits</h4>
+                        <p class="text-[7px] md:text-[9px] tracking-[0.2em] uppercase opacity-60">Focus</p>
+                    </div>
+                    <div class="text-center px-4">
+                        <h4 class="text-sm md:text-lg font-elegant uppercase tracking-widest">Storyteller</h4>
+                        <p class="text-[7px] md:text-[9px] tracking-[0.2em] uppercase opacity-60">Style</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Sobre Mim -->
+        <section id="about" class="py-32 px-6 md:px-20 max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center gap-20">
+                <div class="w-full md:w-1/2 relative">
+                    <div class="w-4/5 aspect-[3/4] rounded-sm overflow-hidden shadow-lg border-8 border-white">
+                        <!-- Imagem Urbana de Londres -->
+                        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=800" alt="Londres" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-12 -right-4 w-3/5 aspect-[3/4] rounded-sm overflow-hidden shadow-2xl border-[12px] border-white z-10">
+                        <!-- Outro trabalho da Letícia (Placeholder) -->
+                        <img src="https://images.unsplash.com/photo-1485182708500-e8f1f318ba72?auto=format&fit=crop&q=80&w=800" alt="Trabalho de Retrato" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 space-y-8">
+                    <div class="flex items-center">
+                        <h2 class="text-4xl md:text-5xl font-elegant">About Me</h2>
+                        <div class="section-line"></div>
+                    </div>
+                    <div class="space-y-4 text-sm md:text-base font-light leading-relaxed opacity-80">
+                        <p>
+                            Sou a Letícia, uma fotógrafa brasileira que encontrou em Londres o cenário perfeito para eternizar conexões humanas genuínas.
+                        </p>
+                        <p>
+                            A minha paixão é capturar momentos que transbordam verdade, transformando o quotidiano em poesia visual. Acredito que cada pessoa e cada casal tem uma história digna de ser contada com sensibilidade e arte.
+                        </p>
+                        <p>
+                            Seja sob a névoa romântica das ruas londrinas ou a luz dourada do fim de tarde, o meu objetivo é que se reconheça em cada clique, guardando para sempre a essência do seu momento.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Portfolio -->
+        <section id="portfolio" class="py-24 bg-brown/[0.02]">
+            <div class="px-6 md:px-20 mb-16 flex items-center">
+                <h2 class="text-4xl font-elegant">Portfolio</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-6 md:px-20">
+                <!-- Cards de Portfólio com imagens temáticas -->
+                <div class="relative group cursor-pointer overflow-hidden rounded-sm card-hover aspect-[3/4]">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 overlay flex items-center justify-center">
+                        <span class="text-white text-[10px] tracking-[0.4em] font-medium uppercase border-b border-white/40 pb-1">Couples</span>
+                    </div>
+                </div>
+                <div class="relative group cursor-pointer overflow-hidden rounded-sm card-hover aspect-[3/4]">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 overlay flex items-center justify-center">
+                        <span class="text-white text-[10px] tracking-[0.4em] font-medium uppercase border-b border-white/40 pb-1">Urban Portraits</span>
+                    </div>
+                </div>
+                <div class="relative group cursor-pointer overflow-hidden rounded-sm card-hover aspect-[3/4]">
+                    <img src="https://images.unsplash.com/photo-1510211513271-e23114d59a85?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 overlay flex items-center justify-center">
+                        <span class="text-white text-[10px] tracking-[0.4em] font-medium uppercase border-b border-white/40 pb-1">Engagement</span>
+                    </div>
+                </div>
+                <div class="relative group cursor-pointer overflow-hidden rounded-sm card-hover aspect-[3/4]">
+                    <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 overlay flex items-center justify-center">
+                        <span class="text-white text-[10px] tracking-[0.4em] font-medium uppercase border-b border-white/40 pb-1">Love Story</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Pacotes -->
+        <section id="prices" class="py-32 px-6 md:px-20 max-w-7xl mx-auto">
+            <div class="flex items-center mb-16">
+                <h2 class="text-4xl font-elegant">Packages</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-end">
+                <!-- Mini -->
+                <div class="bg-white rounded-sm shadow-sm border border-brown/5 overflow-hidden group">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover brightness-75 group-hover:scale-105 transition duration-700">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+                            <h3 class="text-lg font-elegant uppercase tracking-widest">Mini Session</h3>
+                            <p class="text-2xl font-elegant">£180</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <ul class="text-[10px] uppercase tracking-widest font-light space-y-4">
+                            <li class="flex justify-between border-b border-brown/5 pb-2"><span>Duration</span><span>45 min</span></li>
+                            <li class="flex justify-between border-b border-brown/5 pb-2"><span>Photos</span><span>15 edited</span></li>
+                            <li class="flex justify-between pb-2"><span>Location</span><span>1 Spot</span></li>
+                        </ul>
+                        <button class="w-full mt-8 py-3 border border-brown/20 text-brown text-[9px] tracking-widest hover:bg-brown hover:text-white transition uppercase">Book Session</button>
+                    </div>
+                </div>
+                <!-- Standard (Destaque) -->
+                <div class="bg-white rounded-sm shadow-2xl border-t-8 border-terracota md:scale-110 z-10 overflow-hidden group">
+                    <div class="relative h-60">
+                        <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover brightness-75 group-hover:scale-105 transition duration-700">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+                            <h3 class="text-xl font-elegant uppercase tracking-widest">Standard Story</h3>
+                            <p class="text-3xl font-elegant">£320</p>
+                        </div>
+                    </div>
+                    <div class="p-10">
+                        <ul class="text-[10px] uppercase tracking-widest font-medium space-y-5">
+                            <li class="flex justify-between border-b border-brown/10 pb-2"><span>Duration</span><span>90 min</span></li>
+                            <li class="flex justify-between border-b border-brown/10 pb-2"><span>Photos</span><span>40 edited</span></li>
+                            <li class="flex justify-between pb-2"><span>Guide</span><span>Style & Location</span></li>
+                        </ul>
+                        <button class="w-full mt-10 py-4 bg-terracota text-white text-[10px] tracking-widest hover:brightness-110 transition uppercase shadow-lg">Book Now</button>
+                    </div>
+                </div>
+                <!-- Premium -->
+                <div class="bg-white rounded-sm shadow-sm border border-brown/5 overflow-hidden group">
+                    <div class="relative h-48">
+                        <img src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover brightness-75 group-hover:scale-105 transition duration-700">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+                            <h3 class="text-lg font-elegant uppercase tracking-widest">Premium exp</h3>
+                            <p class="text-2xl font-elegant">£550</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <ul class="text-[10px] uppercase tracking-widest font-light space-y-4">
+                            <li class="flex justify-between border-b border-brown/5 pb-2"><span>Duration</span><span>3 Hours</span></li>
+                            <li class="flex justify-between border-b border-brown/5 pb-2"><span>Photos</span><span>80+ edited</span></li>
+                            <li class="flex justify-between pb-2"><span>Location</span><span>2-3 Spots</span></li>
+                        </ul>
+                        <button class="w-full mt-8 py-3 border border-brown/20 text-brown text-[9px] tracking-widest hover:bg-brown hover:text-white transition uppercase">Book Session</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Testemunhos -->
+        <section class="py-24 px-6 bg-nude/20">
+            <div class="max-w-3xl mx-auto relative border border-brown/10 p-12 md:p-20 text-center rounded-sm bg-white shadow-sm">
+                <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full border-4 border-[#FDFCFB] overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200" alt="Cliente">
+                </div>
+                <h5 class="mt-4 text-xl font-elegant italic">Mariana & Thomas</h5>
+                <p class="mt-6 text-sm md:text-base font-light italic opacity-80 leading-relaxed">
+                    "A Letícia tem um olhar único. Ela conseguiu captar a nossa essência enquanto passeávamos por Notting Hill. As fotos não são apenas imagens, são memórias vivas do nosso tempo em Londres. O processo foi leve e o resultado superou todas as expectativas."
+                </p>
+                <div class="mt-10 flex justify-center space-x-3">
+                    <span class="w-8 h-[1px] bg-terracota"></span>
+                    <span class="w-2 h-2 rounded-full border border-terracota"></span>
+                    <span class="w-8 h-[1px] bg-terracota"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Rodapé -->
+        <footer id="contact" class="bg-brown text-nude py-24 px-6 md:px-20">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
+                <div class="col-span-1 md:col-span-1 space-y-6">
+                    <div class="text-2xl font-elegant tracking-tighter uppercase">LG</div>
+                    <div class="text-[10px] uppercase tracking-widest font-light space-y-2 opacity-60">
+                        <p>grigoletto.photo@gmail.com</p>
+                        <p>London, United Kingdom</p>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <h6 class="text-[11px] uppercase tracking-[0.3em] font-medium border-b border-nude/10 pb-2">Navigation</h6>
+                    <ul class="text-[10px] uppercase tracking-[0.2em] font-light space-y-3 opacity-60">
+                        <li><a href="#about" class="hover:text-white transition">About Me</a></li>
+                        <li><a href="#portfolio" class="hover:text-white transition">Portfolio</a></li>
+                        <li><a href="#prices" class="hover:text-white transition">Packages</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h6 class="text-[11px] uppercase tracking-[0.3em] font-medium border-b border-nude/10 pb-2">Social</h6>
+                    <ul class="text-[10px] uppercase tracking-[0.2em] font-light space-y-3 opacity-60">
+                        <li><a href="https://instagram.com/grigoletto.photo" target="_blank" class="hover:text-white transition">Instagram</a></li>
+                        <li><a href="#" class="hover:text-white transition">Linktree</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-6">
+                    <h6 class="text-[11px] uppercase tracking-[0.3em] font-medium border-b border-nude/10 pb-2">Stay in touch</h6>
+                    <form class="flex flex-col space-y-4">
+                        <input type="email" placeholder="YOUR EMAIL" class="bg-transparent border-b border-nude/20 py-2 text-[10px] tracking-widest focus:outline-none focus:border-nude transition">
+                        <button class="text-left text-[9px] uppercase tracking-[0.4em] font-medium hover:text-white transition">Subscribe →</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-24 pt-8 border-t border-nude/5 text-center text-[8px] uppercase tracking-[0.5em] opacity-30">
+                Leticia Grigoletto Photography &copy; 2024
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        window.addEventListener('load', () => {
+            const flash = document.getElementById('flash-effect');
+            const polaroid = document.getElementById('polaroid-unit');
+            const camera = document.getElementById('camera-unit');
+            const splash = document.getElementById('splash-screen');
+            const main = document.getElementById('main-content');
+
+            // Sequência de Splash Acelerada
+            setTimeout(() => {
+                // Efeito de Flash
+                flash.style.animation = "flash-hit 0.5s ease-out forwards";
+                
+                // Câmera desaparece
+                camera.style.opacity = "0";
+                camera.style.transform = "scale(1.4)";
+
+                // Polaroid surge
+                setTimeout(() => {
+                    polaroid.style.animation = "polaroid-pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards";
+                }, 50);
+
+                // Transição para o site (1.1s de visualização)
+                setTimeout(() => {
+                    splash.style.opacity = "0";
+                    setTimeout(() => {
+                        splash.style.display = "none";
+                        document.body.classList.remove('overflow-hidden');
+                        main.classList.remove('opacity-0');
+                    }, 400);
+                }, 1100); 
+
+            }, 500); 
+        });
+    </script>
+</body>
+</html>
+
+```
