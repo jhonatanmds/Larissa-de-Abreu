@@ -1,261 +1,38 @@
-<!DOCTYPE html>
-<html lang="pt-PT">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiago & Soluções | Remodelações e Manutenção em Lisboa</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --ts-blue: #1e293b; /* Azul escuro inspirado no logo */
-            --ts-orange: #f97316; /* Cor-de-laranja vibrante do logo */
-            --ts-light-gray: #f8fafc;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        .bg-ts-blue { background-color: var(--ts-blue); }
-        .text-ts-orange { color: var(--ts-orange); }
-        .bg-ts-orange { background-color: var(--ts-orange); }
-        .border-ts-orange { border-color: var(--ts-orange); }
-
-        .hero-gradient {
-            background: linear-gradient(rgba(30, 41, 59, 0.85), rgba(30, 41, 59, 0.85)), 
-                        url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1920');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
-        }
-    </style>
-</head>
-<body class="bg-gray-50 text-slate-800">
-
-    <!-- Navegação -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-                <div class="flex items-center">
-                    <div class="flex flex-col leading-none">
-                        <span class="text-2xl font-black text-ts-blue tracking-tighter italic">TIAGO <span class="text-ts-orange">&</span> SOLUÇÕES</span>
-                        <span class="text-[10px] font-bold text-gray-500 tracking-[0.2em] uppercase mt-1">Remodelações Profissionais</span>
-                    </div>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#inicio" class="font-medium hover:text-ts-orange transition">Início</a>
-                    <a href="#servicos" class="font-medium hover:text-ts-orange transition">Serviços</a>
-                    <a href="#sobre" class="font-medium hover:text-ts-orange transition">Sobre</a>
-                    <a href="#contacto" class="bg-ts-orange text-white px-6 py-2 rounded-full font-bold hover:bg-orange-600 transition shadow-lg">Pedir Orçamento</a>
-                </div>
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-ts-blue text-2xl">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-4 pb-4 space-y-2">
-            <a href="#inicio" class="block py-2 font-medium">Início</a>
-            <a href="#servicos" class="block py-2 font-medium">Serviços</a>
-            <a href="#sobre" class="block py-2 font-medium">Sobre</a>
-            <a href="#contacto" class="block py-2 text-ts-orange font-bold">Pedir Orçamento</a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="inicio" class="hero-gradient h-[80vh] flex items-center text-white px-4">
-        <div class="max-w-7xl mx-auto w-full">
-            <div class="max-w-2xl">
-                <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
-                    Quer renovar e não sabe como? <br>
-                    <span class="text-ts-orange">O Tiago arranja soluções!</span>
-                </h1>
-                <p class="text-xl mb-8 text-gray-200">
-                    Especialistas em remodelações de interiores em Lisboa. Do Pladur à canalização, entregamos chave na mão com qualidade e confiança.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#contacto" class="bg-ts-orange text-white px-8 py-4 rounded-lg font-bold text-center hover:scale-105 transition shadow-xl">
-                        Orçamento Grátis
-                    </a>
-                    <a href="tel:+351919147933" class="bg-white text-ts-blue px-8 py-4 rounded-lg font-bold text-center hover:bg-gray-100 transition shadow-xl">
-                        <i class="fas fa-phone mr-2"></i> 919 147 933
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Serviços -->
-    <section id="servicos" class="py-20 px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-black text-ts-blue mb-4">O Que Fazemos</h2>
-                <div class="h-1.5 w-24 bg-ts-orange mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Pladur -->
-                <div class="service-card bg-white p-8 rounded-2xl shadow-sm border-b-4 border-ts-orange">
-                    <div class="text-ts-orange text-4xl mb-6"><i class="fas fa-hammer"></i></div>
-                    <h3 class="text-xl font-bold mb-4">Pladur</h3>
-                    <p class="text-gray-600">Tetos falsos, divisórias e sancas de luz com acabamento perfeito.</p>
-                </div>
-
-                <!-- Eletricidade -->
-                <div class="service-card bg-white p-8 rounded-2xl shadow-sm border-b-4 border-ts-orange">
-                    <div class="text-ts-orange text-4xl mb-6"><i class="fas fa-bolt"></i></div>
-                    <h3 class="text-xl font-bold mb-4">Eletricidade</h3>
-                    <p class="text-gray-600">Instalações novas, quadros elétricos e iluminação LED moderna.</p>
-                </div>
-
-                <!-- Canalização -->
-                <div class="service-card bg-white p-8 rounded-2xl shadow-sm border-b-4 border-ts-orange">
-                    <div class="text-ts-orange text-4xl mb-6"><i class="fas fa-faucet"></i></div>
-                    <h3 class="text-xl font-bold mb-4">Canalização</h3>
-                    <p class="text-gray-600">Reparação de fugas, esgotos e renovação total de casas de banho.</p>
-                </div>
-
-                <!-- Pinturas -->
-                <div class="service-card bg-white p-8 rounded-2xl shadow-sm border-b-4 border-ts-orange">
-                    <div class="text-ts-orange text-4xl mb-6"><i class="fas fa-paint-roller"></i></div>
-                    <h3 class="text-xl font-bold mb-4">Pinturas</h3>
-                    <p class="text-gray-600">Pinturas de interiores e exteriores com as melhores tintas do mercado.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sobre / Diferencial -->
-    <section id="sobre" class="bg-ts-blue py-20 text-white px-4">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-                <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&q=80&w=800" alt="Ferramentas de trabalho" class="rounded-3xl shadow-2xl">
-            </div>
-            <div>
-                <h2 class="text-3xl md:text-4xl font-black mb-6 text-ts-orange tracking-tight italic">Tiago Coelho - Tiago & Soluções</h2>
-                <p class="text-lg mb-6 leading-relaxed">
-                    Com anos de experiência no setor da construção e manutenção em Lisboa, a nossa missão é transformar espaços e resolver problemas com transparência e eficácia.
-                </p>
-                <ul class="space-y-4">
-                    <li class="flex items-center space-x-3 text-lg">
-                        <i class="fas fa-check-circle text-ts-orange"></i>
-                        <span>Orçamentos transparentes e detalhados.</span>
-                    </li>
-                    <li class="flex items-center space-x-3 text-lg">
-                        <i class="fas fa-check-circle text-ts-orange"></i>
-                        <span>Cumprimento rigoroso de prazos.</span>
-                    </li>
-                    <li class="flex items-center space-x-3 text-lg">
-                        <i class="fas fa-check-circle text-ts-orange"></i>
-                        <span>Equipa profissional e experiente.</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contacto -->
-    <section id="contacto" class="py-20 px-4 bg-gray-100">
-        <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:row-reverse md:flex-row">
-            <!-- Info -->
-            <div class="bg-ts-orange p-10 text-white md:w-2/5">
-                <h2 class="text-3xl font-black mb-8">Contactos</h2>
-                <div class="space-y-8">
-                    <div class="flex items-start space-x-4">
-                        <i class="fas fa-phone-alt mt-1"></i>
-                        <div>
-                            <p class="font-bold">Ligue agora</p>
-                            <a href="tel:+351919147933" class="text-xl">919 147 933</a>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <i class="fas fa-envelope mt-1"></i>
-                        <div>
-                            <p class="font-bold">E-mail</p>
-                            <a href="mailto:tiagocoelho1987@gmail.com" class="break-all">tiagocoelho1987@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <i class="fas fa-map-marker-alt mt-1"></i>
-                        <div>
-                            <p class="font-bold">Área de Atuação</p>
-                            <p>Grande Lisboa e arredores</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Form -->
-            <div class="p-10 md:w-3/5">
-                <h3 class="text-2xl font-bold text-ts-blue mb-6">Peça um orçamento sem compromisso</h3>
-                <form class="space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="text" placeholder="Seu Nome" class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-ts-orange outline-none">
-                        <input type="tel" placeholder="Seu Telemóvel" class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-ts-orange outline-none">
-                    </div>
-                    <input type="email" placeholder="Seu E-mail" class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-ts-orange outline-none">
-                    <select class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-ts-orange outline-none bg-white">
-                        <option>Serviço Pretendido</option>
-                        <option>Remodelação Geral</option>
-                        <option>Pladur</option>
-                        <option>Eletricidade</option>
-                        <option>Canalização</option>
-                        <option>Pinturas</option>
-                    </select>
-                    <textarea rows="4" placeholder="Descrição da obra..." class="w-full p-3 rounded-lg border focus:ring-2 focus:ring-ts-orange outline-none"></textarea>
-                    <button type="submit" class="w-full bg-ts-blue text-white font-bold py-4 rounded-lg hover:bg-slate-800 transition uppercase tracking-widest shadow-lg">
-                        Enviar Pedido
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-ts-blue text-white py-12 px-4 border-t border-slate-700">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-            <div class="mb-8 md:mb-0">
-                <span class="text-2xl font-black text-white italic tracking-tighter">TIAGO <span class="text-ts-orange">&</span> SOLUÇÕES</span>
-                <p class="text-gray-400 mt-2">© 2024 Todos os direitos reservados.</p>
-            </div>
-            <div class="flex space-x-6 text-2xl">
-                <a href="#" class="hover:text-ts-orange transition"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="hover:text-ts-orange transition"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/351919147933" class="hover:text-green-500 transition"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Botão WhatsApp Fixo -->
-    <a href="https://wa.me/351919147933" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition z-50">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <script>
-        // Menu Mobile Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // Fechar menu ao clicar num link (mobile)
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
-    </script>
-</body>
-</html>
-
+Aqui está o prompt atualizado com as informações do perfil da Leticia Grigoletto. Mantive a mesma estrutura visual e o design elegante da página anterior, mas adaptei os textos, o estilo de portfólio (focado em casais/ensaios urbanos como mostra o feed) e os dados de contato.
+**Copie o texto abaixo:**
+> Aja como um desenvolvedor Front-end sênior e web designer. Por favor, crie o código HTML e CSS (pode usar Tailwind CSS se preferir) para uma landing page de portfólio de fotografia moderna, minimalista e elegante.
+> **Estilo Visual e Tema:**
+>  * **Cores:** Tons terrosos, urbanos e quentes, refletindo uma paleta romântica (bege, terracota, marrom escuro, off-white). Fundo predominantemente claro/off-white.
+>  * **Tipografia:** Fontes elegantes (mistura de Sans-serif limpa para textos e uma fonte fina/geométrica para os títulos grandes).
+>  * **Design:** Layout espaçoso (clean), uso de imagens sobrepostas (overlapping) e cantos levemente arredondados ou retos.
+> **Estrutura das Seções (Single Page):**
+> **1. Header (Cabeçalho):**
+>  * Logo centralizado (Texto "Leticia Grigoletto Photography" ou iniciais "LG").
+>  * Menu de navegação à esquerda (About Me, Portfolio) e à direita (Prices, Contacts).
+>  * Ícone do Instagram no canto superior direito apontando para @grigoletto.photo.
+> **2. Hero Section (Início):**
+>  * Lado esquerdo: Título grande com o nome "LETICIA GRIGOLETTO", subtítulo "Capturing moments in London" (ou "Usando a fotografia para contar a sua história") e um botão "Book your session" com borda fina.
+>  * Lado direito/Centro: Uma imagem de destaque grande de uma fotógrafa (estilo urbano/Londres).
+>  * Rodapé do Hero: Uma barra horizontal translúcida ou com fundo integrado contendo estatísticas fictícias para preencher o design (ex: "BASED IN LONDON", "COUPLES & PORTRAITS", "STORYTELLER").
+> **3. Seção "About Me" (Sobre mim):**
+>  * Lado esquerdo: Composição estilizada de duas imagens sobrepostas (sugestão: fotos em cenários urbanos de Londres).
+>  * Lado direito: Título "About Me" e 2 a 3 parágrafos curtos explicando que ela é uma fotógrafa brasileira baseada em Londres, apaixonada por capturar momentos genuínos e usar a fotografia para contar a história de cada pessoa/casal.
+> **4. Seção "Portfolio":**
+>  * Título "Portfolio" alinhado à esquerda com uma linha horizontal decorativa ao lado.
+>  * Grid de 4 colunas com imagens verticais (cards de fotos, focando em casais e retratos urbanos).
+>  * Cada imagem deve ter uma sobreposição escura translúcida no centro contendo o nome da categoria (ex: COUPLES, LOVE STORY, URBAN PORTRAITS, ENGAGEMENT).
+> **5. Seção "Prices" (Preços):**
+>  * Título "Packages" com uma linha horizontal decorativa.
+>  * 3 Cards de planos (ex: "Mini Session", "Standard Story", "Premium Experience").
+>  * Cada card deve ter: Uma imagem de fundo no topo com o nome do pacote e o preço sobrepostos, seguido por uma tabela limpa com detalhes (Duration, Number of photos, Location guide), e um botão "BOOK" na base. O card do meio deve ter um leve destaque.
+> **6. Seção de Depoimentos (Testimonials):**
+>  * Um container em formato de caixa com borda fina.
+>  * Foto de perfil circular pequena no topo central (quebrando a borda superior).
+>  * Nome do cliente e o texto de um depoimento elogiando os ensaios de casal.
+>  * Indicadores de carrossel (pontinhos/linhas) abaixo da caixa.
+> **7. Footer (Rodapé):**
+>  * Lado esquerdo: Logo e informações de contato (Email: grigoletto.photo@gmail.com, Location: London).
+>  * Centro: Links de navegação e ícone do Instagram e Linktree (linktr.ee/grigoletto.photo).
+>  * Lado direito: Formulário de inscrição ("Stay in touch" com botão "Subscribe").
+> Por favor, forneça o código completo, responsivo (adaptável para mobile) e inclua placeholders (como o Unsplash focando em couple, london ou placehold.co) para as imagens.
+> 
